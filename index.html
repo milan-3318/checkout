@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Required</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS66M3Z4CM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZS66M3Z4CM');
+    </script>
+
+    <style>
+        body{
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial;
+        }
+        .box{
+            text-align: center;
+        }
+        input{
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button{
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: crimson;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Enter the password !!</h2>
+    <h3>Hint: Think bakery. Think small. Think sweet.</h3>
+    <input type="password" id="password" placeholder="Enter here">
+    <br><br>
+    <button onclick="checkPassword()">Enter</button>
+</div>
+
+<script>
+    function checkPassword(){
+        var pass = document.getElementById("password").value;
+
+        if(pass.toLowerCase() === "cupcake"){
+
+            gtag('event', 'correct_password', {
+                event_category: 'engagement'
+            });
+
+            window.location.href = "valentine.html";
+        } else {
+
+            gtag('event', 'wrong_password', {
+                event_category: 'engagement'
+            });
+
+            window.location.href = "denied.html";
+        }
+    }
+</script>
+
+</body>
+</html>

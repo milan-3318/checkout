@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Valentine's Day</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS66M3Z4CM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZS66M3Z4CM');
+    </script>
+
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: cursive;
+            text-align: center;
+            background: url("photo_2026-02-14_01-48-13.jpg") no-repeat center center/cover;
+            position: relative;
+        }
+
+        body::before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1;
+        }
+
+        .card{
+            position: relative;
+            z-index: 2;
+            background: rgba(0,0,0,0.65);
+            padding: 50px;
+            border-radius: 25px;
+            color: white;
+            backdrop-filter: blur(8px);
+            max-width: 600px;
+        }
+
+        #message{
+            margin-top: 20px;
+            font-size: 20px;
+            min-height: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Happy Valentines Day ❤️!!</h1>
+    <div id="message"></div>
+</div>
+
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+    // Track page open
+    gtag('event', 'valentine_page_opened', {
+        event_category: 'engagement'
+    });
+
+    // Typing effect
+    const text = `Even if we dont talk everyday...
+You are still my favorite person!!
+
+Some connections dont break!!
+They just wait!!
+
+be Safest and Happiest!!
+Love you!!
+- MS`;
+
+    let i = 0;
+    function typeEffect() {
+        if (i < text.length) {
+            document.getElementById("message").innerHTML += 
+                text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+            i++;
+            setTimeout(typeEffect, 40);
+        }
+    }
+    typeEffect();
+
+    // Track time spent
+    let startTime = Date.now();
+
+    window.addEventListener("beforeunload", function () {
+        let timeSpent = Math.round((Date.now() - startTime) / 1000);
+
+        gtag('event', 'time_spent_seconds', {
+            event_category: 'engagement',
+            value: timeSpent
+        });
+    });
+
+</script>
+
+</body>
+</html>
